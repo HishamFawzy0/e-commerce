@@ -7,6 +7,23 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                 />
         </div>
+        @if (registerForm.get('name')?.hasError && registerForm.get('name')?.touched) {
+           @if (registerForm.get('name')?.hasError('required')) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium capitalize">required</span> CAN'T BE EMPTY.
+            </div>
+           }
+           @else if (registerForm.get('name')?.hasError('minlength')) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium capitalize">Should be more than 2 characters</span>
+            </div>
+           }
+           @else if (registerForm.get('name')?.hasError('maxlength')) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium capitalize">Should be less than 20 characters</span>
+            </div>
+           }
+        }
         <div class="mb-3">
             <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Email</label>
             <input formControlName="email" type="email"
