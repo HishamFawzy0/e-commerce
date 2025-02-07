@@ -1,0 +1,35 @@
+
+<div class="w-9/12 mx-auto my-9">
+    <form (ngSubmit)="register()" [formGroup]="registerForm"> 
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Name</label>
+            <input formControlName="name" type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                />
+        </div>
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Email</label>
+            <input formControlName="email" type="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+        </div>
+       
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Password</label>
+            <input formControlName="password" type="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+        </div>
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">rePassword</label>
+            <input formControlName="rePassword" type="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+        </div>
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Phone</label>
+            <input formControlName="phone" type="number"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+        </div>
+
+        <button type="submit" class="btn-green"> Submit</button>
+    </form>
+    
+</div>
