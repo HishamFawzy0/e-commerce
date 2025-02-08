@@ -1,6 +1,15 @@
 
 <div class="w-9/12 mx-auto my-9">
     <form (ngSubmit)="register()" [formGroup]="registerForm"> 
+        @if (alreadyexisting==='Account Already Exists') {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium capitalize">{{alreadyexisting}}</span>
+            </div>
+        }@else if (alreadyexisting==='Success') {
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <span class="font-medium">Created Account Successfully </span>.
+            </div>
+        }
         <div class="mb-3">
             <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Name</label>
             <input formControlName="name" type="text"
@@ -29,24 +38,84 @@
             <input formControlName="email" type="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
         </div>
+        @if (registerForm.get('email')?.hasError && registerForm.get('email')?.touched) {
+           @if (registerForm.get('name')?.hasError('required')) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium capitalize">required</span> CAN'T BE EMPTY.
+            </div>
+           }
+           @else if (registerForm.get('email')?.hasError('email')) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium capitalize">Enter a valid email</span>
+            </div>
+           }
+           
+        }
        
         <div class="mb-3">
             <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Password</label>
             <input formControlName="password" type="password"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
         </div>
+        @if (registerForm.get('password')?.hasError && registerForm.get('password')?.touched) {
+        @if (registerForm.get('password')?.hasError('required')) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium capitalize">required</span> CAN'T BE EMPTY.
+        </div>
+        }
+        @else if (registerForm.get('password')?.hasError('pattern')) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium capitalize">Enter a valid password</span>
+        </div>
+        }
+        
+        }
         <div class="mb-3">
             <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">rePassword</label>
             <input formControlName="rePassword" type="password"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
         </div>
+        @if (registerForm.get('rePassword')?.hasError && registerForm.get('rePassword')?.touched) {
+        @if (registerForm.get('rePassword')?.hasError('required')) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium capitalize">required</span> CAN'T BE EMPTY.
+        </div>
+        }
+        @else if (registerForm.hasError('mismatch')) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium capitalize">Mismatch password</span>
+        </div>
+        }
+        
+        }
         <div class="mb-3">
             <label class="block mb-2 text-sm font-medium text-green-900 dark:text-green ">Phone</label>
-            <input formControlName="phone" type="number"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+            <input formControlName="phone"  type="number"
+                class="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-number-spin-box]:appearance-none  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
         </div>
+        @if (registerForm.get('phone')?.hasError && registerForm.get('phone')?.touched) {
+        @if (registerForm.get('phone')?.hasError('required')) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium capitalize">required</span> CAN'T BE EMPTY.
+        </div>
+        }
+        @else if (registerForm.get('phone')?.hasError('pattern')) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium capitalize">Enter a valid phone</span>
+        </div>
+        }
+        
+        }
 
-        <button type="submit" class="btn-green"> Submit</button>
+        <button [disabled]="registerForm.invalid" [class]="{
+            'cursor-not-allowed': registerForm.invalid,
+        }" type="submit" class="btn-green disabled:bg-gray-200"> Submit 
+        @if (isLoading) {
+            <i class="ms-2 fa fa-spinner fa-spin"></i>
+        }
+    </button>
+
+        
     </form>
     
 </div>
